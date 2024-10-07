@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Главная страница Казино</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать в Казино!</h1>
+        <nav>
+            <a href="registration.html">Регистрация</a>
+            <a href="login.html" id="loginLink">Вход</a>
+        </nav>
+
+        <div id="userMenu" style="display: none;">
+            <p>Вы вошли как: <span id="usernameDisplay"></span></p>
+            <button id="logoutButton">Выйти</button>
+        </div>
+
+        <div class="games-return">
+            <button onclick="window.location.href='games.html'">Вернуться к играм</button>
+        </div>
+    </div>
+
+    <script>
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+if (currentUser) {
+    document.getElementById('usernameDisplay').textContent = currentUser.username;
+    document.getElementById('userMenu').style.display = 'block';
+    document.getElementById('loginLink').style.display = 'none';
+} else {
+    // Предложить пользователю зарегистрироваться или войти
+}
+
+        });
+    </script>
+
+    <style>
+        .games-return {
+            margin-top: 20px;
+        }
+        .games-return button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .games-return button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>
