@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Административная панель</title>
+</head>
+<body>
+<div class="container">
+    <h2>Административная панель</h2>
+    <div>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" required>
+    </div>
+    <div>
+        <label for="chipsToGive">Количество фишек:</label>
+        <input type="number" id="chipsToGive" min="1" required>
+    </div>
+    <button id="giveButton">Выдать фишки</button>
+    <div id="adminResult"></div>
+    <button onclick="window.location.href='games.html'">Вернуться к играм</button>
+</div>
+
+<script>
+    document.getElementById('giveButton').addEventListener('click', function() {
+        const username = document.getElementById('username').value;
+        const chipsToGive = parseInt(document.getElementById('chipsToGive').value);
+
+        if (username && chipsToGive > 0) {
+            // Получаем данные пользователей из localStorage
+            let usersData = JSON.parse(localStorage.getItem('usersData')) || {};
+
+            // Если пользователь не существует, создаем его
+            if (!usersData[username]) {
+                usersData[username] = {
+                    chips: 0,
+                    spins: 0
+                };
+            }
+
+            // Выдаем фишки
+            usersData[username].chips += chipsToGive;
+
+            // Сохраняем обновленные данные в localStorage
+            localStorage.setItem('usersData', JSON.stringify(usersData));
+
+            document.getElementById('adminResult').textContent = `Вы выдали ${chipsToGive} фишек пользователю ${username}.`;
+        } else {
+            alert("Пожалуйста, заполните все поля корректно.");
+        }
+    });
+</script>
+</body>
+</html>

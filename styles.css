@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Выравнивание текста по центру здесь */
+}
+
+/* Стили заголовков */
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Стили для форм */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Плавное изменение цвета */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Стили для навигации */
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px; /* Добавление промежутков между ссылками */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Оформление сообщений и предупреждений */
+.alert {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Рулетка */
+.roulette-container {
+    margin-top: 20px;
+}
+
+.wheel {
+    margin: 20px auto;
+    width: 300px;
+    height: 300px;
+    border: 16px solid #555;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: white; /* Белый фон для рулетки */
+}
+
+.casino-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    white-space: nowrap;
+    transition: transform 4s ease-out; /* Плавная анимация вращения */
+}
+
+/* Анимация */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.spinning {
+    animation: spin 4s ease-out forwards; /* Анимация кручения */
+}
+
+    white-space: nowrap;
+}
+
+#result {
+    font-size: 24px;
+    margin: 20px 0; /* Вертикальные отступы только */
+}
+
+#history {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.8); /* Фон для читаемости текста */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для отделения от фона */
+}
+
+#history h3, #history ul {
+    margin: 0;
+    padding: 0;
+}
+
+#history ul {
+    list-style-type: none; /* Удаляем точки */
+}
+
+/* Анимация */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.spinning {
+    animation: spin 4s ease-out forwards; /* Анимация кручения */
+}

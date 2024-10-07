@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Вход</title>
+</head>
+<body>
+<div class="container">
+    <h2>Вход</h2>
+    <div>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" required>
+    </div>
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" required>
+    </div>
+    <button id="loginButton">Войти</button>
+    <div id="loginResult"></div>
+    <p>Если у вас нет аккаунта, <a href="registration.html">зарегистрируйтесь</a>.</p>
+</div>
+<script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        let usersData = JSON.parse(localStorage.getItem('usersData')) || {};
+
+        if (usersData[username] && usersData[username].password === password) {
+            localStorage.setItem('currentUser', username); // Устанавливаем текущего пользователя
+            window.location.href = 'games.html'; // Перенаправление на страницу с играми после успешного входа
+        } else {
+            document.getElementById('loginResult').textContent = 'Пользователь не найден или пароль неверен. Пожалуйста, зарегистрируйтесь или проверьте введенные данные.';
+        }
+    });
+</script>
+</body>
+</html>

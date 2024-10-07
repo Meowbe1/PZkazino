@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Игры</title>
+</head>
+<body>
+<div class="container">
+    <h2>Игры</h2>
+    <p>Выберите игру, чтобы начать!</p>
+    <a href="fishki.html">Играть в Фишки</a>
+    <a href="roulette.html">Играть в Рулетку</a>
+    <nav>
+        <a href="index.html">На главную</a>
+    </nav>
+    
+    <!-- Кнопка для доступа к административной панели -->
+    <button id="adminPanelButton" style="display: none;" onclick="window.location.href='admin.html'">Административная панель</button>
+</div>
+
+<script>
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (!currentUser) {
+        alert('Вы должны зарегистрироваться или войти, чтобы играть.');
+        window.location.href = 'registration.html'; 
+    } else {
+        const usersData = JSON.parse(localStorage.getItem('usersData')) || {};
+        const user = usersData[currentUser];
+
+        if (user) {
+            // Удалили строку, показывающую фишки
+            // Можно добавить дополнительные сообщения или оставить элемент пустым
+            // document.getElementById('userStats').textContent = `Добро пожаловать, ${currentUser}! У вас ${user.chips} фишек.`; 
+            
+            // Проверяем роль пользователя и показываем кнопку админской панели, если это администратор
+            if (user.role === 'admin') {
+                document.getElementById('adminPanelButton').style.display = 'block';
+            }
+        } else {
+            alert('Пользователь не найден.');
+        }
+    }
+</script>
+</body>
+</html>
